@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<title>@ViewData["Title"] - StudentCRUD</title>
+@model IEnumerable<Student>
+@{
+    Layout = "~/Views/Shared/mylayout.cshtml";
+}
+
+<div class="container">
+
+
+    <table class="table table-bordered table-hover">
+        <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gradutad</th>
+                    <th>GPA</th>
+                    <th>Faculty</th>
+                    <th>Image</th>
+                    <th>options</th>
+        </thead>
+        <tbody>
+        @foreach(var item in Model)
+        {
+          <tr>
+
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Graduated</td>
+                <td>@item.Gpa</td>
+                <td>@item.Facluty.Name</td>
+                    <td><img src="~/imge/@item.img" style="width:80px;height:80px"  /></td>
+               <td>
+
+              @* <a class="btn btn-warning" href="/Student/Update?id=@item.ID">Update</a> *@
+                         <a class=" btn btn-info" asp-controller="Student" asp-action="Update" asp-route-id="@item.ID">Update</a> 
+                <a class="btn btn-danger" href="/Student/Delete?id=@item.ID">Delete</a>
+                        <a class="btn btn-primary" href="/Student/Detils?id=@item.ID">Detils</a>
+
+                </td>
+                    
+
+            </tr>
+                
+        }
+       
+        
+        </tbody>
+    </table>
+@* <a class="btn btn-primary my-2 w-50 " href="/Student/Create">ADD</a> *@
+    <a class="btn btn-primary my-2 w-50 " href="/Acount/Registration">ADD</a>
+</div>

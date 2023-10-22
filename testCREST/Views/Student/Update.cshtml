@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Student
+@* <div class="container">
+    <h2>New student</h2> *@
+ @*    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        @*<div class="form-group">
+    @Html.LabelFor(s => s.Id)
+    @Html.EditorFor(s => s.Id, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(s => s.Id, "", new { @class = "text-danger" })
+    </div>*@
+@*         <div class="form-group">
+            @Html.LabelFor(s => s.Name)
+            @Html.EditorFor(s => s.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(s => s.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(s => s.Facluty)
+             @* @Html.DropDownList() *@
+    @*         @Html.DropDownList("FaclutyId",   (IEnumerable<SelectListItem>)ViewBag.FaclutyId ,null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.ID, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(s => s.Graduated)
+            @Html.CheckBoxFor(s => s.Graduated, new { htmlAttributes = new { @class = "form-check" } })
+            @Html.ValidationMessageFor(s => s.Graduated, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(s => s.Gpa)
+            @Html.EditorFor(s => s.Gpa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(s => s.Gpa, "", new { @class = "text-danger" })
+        </div>
+        <input type="submit" value="Add" class="btn btn-success" /> 
+
+    }
+</div>   *@
+<form method="post" asp-controller="Student" asp-action="Update">
+    <div class="form-group">
+        <label asp-for="ID">IDStudent</label>
+        <input type="hidden" asp-for="ID" />
+    </div>
+    <div class="col-form-label-lg">
+        <label asp-for="Name" ></label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Graduated"></label>
+        <input type="checkbox" class="form-check" asp-for="Graduated" />
+        <span class="text-danger" asp-validation-for="Graduated"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Gpa"></label>
+        <input class="form-control" asp-for="Gpa" />
+        <span class="text-danger" asp-validation-for="Gpa"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FaclutyId"></label>
+        <select class="form-control" asp-for="FaclutyId" asp-items="@ViewBag.FaclutyId" ></select>
+        <span class="text-danger" asp-validation-for="FaclutyId"></span>
+    </div>
+
+
+
+    <input type="submit" class="btn btn-info" value="Add" />
+</form>
+
+
